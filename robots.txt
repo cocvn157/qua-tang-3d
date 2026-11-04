@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://cocvn157.github.io/qua-tang-3d/sitemap.xml

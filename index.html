@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>💖 Xưởng Tạo Web Trái Tim 3D Tỏ Tình, Chúc Mừng Sinh Nhật & Xin Lỗi Người Yêu</title>
+  <meta name="description" content="Tự tạo trang web Trái Tim 3D tỏ tình (có nút Không đồng ý tự chạy trốn), web Bánh Kem thổi nến chúc mừng sinh nhật, web Xin lỗi người yêu & Vòng quay tình yêu mang tên riêng trong 10 giây!" />
+  <meta property="og:title" content="💖 Món Quà 3D Đặc Biệt Dành Riêng Cho Bạn — Bấm Để Mở Ngay!" />
+  <meta property="og:description" content="Một bất ngờ lung linh kèm tiếng nhạc và bức thư dành riêng cho bạn. Hãy mở xem ngay nhé!" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cocvn157.github.io/qua-tang-3d/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- 3D Particle Heart & Fireworks Canvas -->
+  <canvas id="stage-canvas"></canvas>
+
+  <div class="app-container">
+    <!-- TOP NAVIGATION -->
+    <header class="top-nav">
+      <div class="brand-box">
+        <div class="brand-icon">💖</div>
+        <div>
+          <div class="brand-name">Quà Tặng 3D & Web Tỏ Tình</div>
+          <div class="brand-tagline">Tạo Web Trái Tim 3D • Sinh Nhật • Xin Lỗi Người Yêu Trong 10 Giây</div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button id="btnToggleMusic" class="btn-glass">🎵 Bật Nhạc Lãng Mạn</button>
+        <a href="#customizerSection" class="btn-glass" style="text-decoration:none;">✨ Tự Tạo Theo Tên Bạn</a>
+        <button id="btnOpenVipModal" class="btn-pink" style="padding:8px 15px;font-size:12.5px;">
+          👑 Mở Khóa VIP (19k)
+        </button>
+        <button id="btnOpenOwnerModal" class="btn-glass" title="Cài đặt số tài khoản ngân hàng nhận tiền VietQR">
+          ⚙️ Cài Đặt TK Nhận Tiền
+        </button>
+      </div>
+    </header>
+
+    <!-- 4 VIRAL MODES -->
+    <nav class="mode-tabs">
+      <button class="mode-tab-btn active" data-mode="love">
+        <span class="m-icon">💖</span>
+        <div>
+          <strong>1. Trái Tim 3D Tỏ Tình</strong>
+          <small>Nút "Không đồng ý" tự chạy trốn</small>
+        </div>
+      </button>
+
+      <button class="mode-tab-btn" data-mode="birthday">
+        <span class="m-icon">🎂</span>
+        <div>
+          <strong>2. Bánh Kem Sinh Nhật</strong>
+          <small>Thổi nến ước nguyện & pháo hoa</small>
+        </div>
+      </button>
+
+      <button class="mode-tab-btn" data-mode="apology">
+        <span class="m-icon">🥺</span>
+        <div>
+          <strong>3. Web Xin Lỗi Người Yêu</strong>
+          <small>Nút "Tha lỗi" phóng to cực yêu</small>
+        </div>
+      </button>
+
+      <button class="mode-tab-btn" data-mode="wheel">
+        <span class="m-icon">🧧</span>
+        <div>
+          <strong>4. Vòng Quay Tình Yêu</strong>
+          <small>Bốc thăm quà tặng & lì xì vui</small>
+        </div>
+      </button>
+    </nav>
+
+    <!-- ======================================================================
+         MAIN INTERACTIVE 3D GIFT STAGE
+         ====================================================================== -->
+    <section class="stage-card" id="mainGiftStage">
+      <div id="stageRecipientPill" class="recipient-badge">💌 Gửi Tới: Bảo Ngọc Yêu Thương (Từ: Hoàng Quân)</div>
+      <h1 id="stageMainHeading" class="stage-title">Làm Người Yêu Anh Nhé, Bảo Ngọc? ❤️</h1>
+
+      <!-- Dynamic Visual Centerpiece (Heart / Birthday Cake / Apology Bear / Lucky Wheel) -->
+      <div id="stageCenterVisual"></div>
+
+      <!-- Typewriter Romantic Message -->
+      <div id="stageMessageText" class="typewriter-box"></div>
+
+      <!-- Interactive Action Arena (Runaway Button / Blow Candles / Spin Wheel) -->
+      <div id="stageActionArena" class="dodge-arena"></div>
+
+      <!-- Small Free Banner (Hidden when VIP is unlocked) -->
+      <div id="freeWatermarkBar" style="margin-top:18px;font-size:12px;color:#e2c8dc;">
+        ✨ Bạn cũng muốn tạo trang web 3D mang tên người thương?
+        <a href="#customizerSection" style="color:#fde68a;font-weight:700;">Bấm vào đây tạo ngay trong 10 giây!</a>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         CUSTOMIZER: TỰ TẠO WEB MANG TÊN NGƯỜI THƯƠNG TRONG 10 GIÂY
+         ====================================================================== -->
+    <section id="customizerSection" class="customizer-card">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:16px;">
+        <h2 style="font-size:20px;color:#fde68a;">
+          ✨ Tự Tạo Trang Web 3D Mang Tên Người Thương Của Bạn (Chỉ 10 Giây)
+        </h2>
+        <span id="vipBadgeStatus" class="btn-glass" style="cursor:default;">🌟 Bản Miễn Phí</span>
+      </div>
+
+      <div class="grid-2">
+        <div>
+          <label class="input-label">1. Chọn Chủ Đề Món Quà 3D</label>
+          <select id="custModeSelect" class="select-input">
+            <option value="love">💖 Web Trái Tim 3D Tỏ Tình & Kỷ Niệm (Nút Không đồng ý chạy trốn)</option>
+            <option value="birthday">🎂 Web Bánh Kem Thổi Nến & Pháo Hoa Chúc Mừng Sinh Nhật</option>
+            <option value="apology">🥺 Web Xin Lỗi Người Yêu / Làm Hòa Dễ Thương</option>
+            <option value="wheel">🧧 Vòng Quay Tình Yêu & Bốc Thăm Quà Tặng Bất Ngờ</option>
+          </select>
+
+          <label class="input-label">2. Tên Người Nhận (Ví dụ: Em Yêu, Bảo Ngọc, Minh Anh, Mẹ Yêu...)</label>
+          <input id="custToName" class="text-input" type="text" value="Bảo Ngọc" placeholder="Nhập tên người nhận..." />
+
+          <label class="input-label">3. Tên Của Bạn (Người Gửi)</label>
+          <input id="custFromName" class="text-input" type="text" value="Hoàng Quân" placeholder="Nhập tên của bạn..." />
+        </div>
+
+        <div>
+          <label class="input-label">4. Chọn Nhanh Mẫu Lời Chúc Ngọt Ngào Có Sẵn</label>
+          <select id="custTemplateSelect" class="select-input">
+            <option value="0">💌 Mẫu 1 (Tỏ tình): Từ ngày gặp em, thế giới của anh bỗng rực rỡ hơn ngàn vì sao...</option>
+            <option value="1">💍 Mẫu 2 (Kỷ niệm): Cảm ơn người thương đã luôn nắm chặt tay đi qua bao nắng mưa...</option>
+            <option value="2">🎂 Mẫu 3 (Sinh nhật người yêu): Chúc mừng sinh nhật công chúa của anh! Chúc em tuổi mới...</option>
+            <option value="3">🎉 Mẫu 4 (Sinh nhật bạn thân / gia đình): Chúc mừng sinh nhật! Tuổi mới tiền vào như nước...</option>
+            <option value="4">🥺 Mẫu 5 (Xin lỗi người yêu): Anh biết lỗi rồi mà, đừng giận anh nữa nhé, đi ăn trà sữa nha!</option>
+            <option value="5">🌹 Mẫu 6 (Chúc 20/10, 8/3, Valentine): Chúc một nửa thế giới của anh luôn xinh đẹp rạng ngời...</option>
+          </select>
+
+          <label class="input-label">5. Nội Dung Bức Thư Đánh Máy (Bạn có thể sửa tùy ý)</label>
+          <textarea id="custMessageInput" class="area-input" rows="4">Từ ngày gặp em, thế giới của anh bỗng rực rỡ hơn ngàn vì sao. Cảm ơn em đã đến bên anh. Đồng ý làm người yêu anh mãi mãi nhé! ❤️</textarea>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:6px;">
+        <button id="btnApplyCustomGift" class="btn-pink">
+          🚀 Cập Nhật Lên Sân Khấu 3D & Tạo Link Gửi Tặng Ngay
+        </button>
+        <button id="btnCopyGiftUrl" class="btn-glass">
+          📋 Sao Chép Link Gửi Qua Zalo / Messenger
+        </button>
+        <button id="btnDownloadGiftCardPng" class="btn-glass">
+          📥 Tải Ảnh Thiệp Kỷ Niệm (.PNG Có Mã QR)
+        </button>
+      </div>
+
+      <div style="margin-top:14px;">
+        <label class="input-label">🔗 Đường Link Món Quà Mang Tên Riêng Của Bạn (Copy gửi cho người ấy):</label>
+        <input id="generatedGiftUrlBox" class="text-input" type="text" readonly style="margin-bottom:0;" />
+      </div>
+
+      <!-- Hidden Canvas for High-Res Gift Card + QR Download -->
+      <canvas id="giftCardExportCanvas" width="800" height="460" style="display:none;"></canvas>
+    </section>
+  </div>
+
+  <!-- ========================================================================
+       MODAL 1: MỞ KHÓA VIP 19.000Đ QUA VIETQR (XÓA QUẢNG CÁO + HIỆU ỨNG VIP)
+       ======================================================================== -->
+  <div id="vipModal" class="modal-overlay">
+    <div class="modal-box">
+      <button class="modal-close-btn" id="btnCloseVipModal">&times;</button>
+      <h3 style="color:#fde68a;font-size:19px;text-align:center;margin-bottom:6px;">
+        👑 Mở Khóa Đặc Quyền VIP Quà Tặng 3D
+      </h3>
+      <p style="font-size:13px;color:#e2c8dc;text-align:center;margin-bottom:14px;">
+        Chỉ <strong style="color:#ff85b3;font-size:16px;" id="vipPriceLabel">19.000đ</strong> để xóa dòng chữ quảng cáo dưới chân trang, bật hiệu ứng **Mưa Sao Băng & Pháo Hoa Trái Tim Kép**, và tải **Thiệp Kỷ Niệm Kèm Mã QR Độ Phân Giải Cao**!
+      </p>
+
+      <div style="background:#fff;padding:12px;border-radius:16px;text-align:center;margin-bottom:14px;">
+        <img id="vipVietQrImg" src="" alt="Mã VietQR Thanh Toán" style="max-width:225px;width:100%;border-radius:10px;" />
+        <div style="color:#0f172a;font-size:12.5px;margin-top:6px;">
+          Ngân hàng: <strong id="vipBankText">MB</strong> • STK: <strong id="vipAccText">0988888888</strong><br />
+          Chủ TK: <strong id="vipNameText">NGUYEN VAN A</strong>
+        </div>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.06);padding:12px;border-radius:12px;margin-bottom:12px;">
+        <label class="input-label">🔑 Nhập Mã Mở Khóa VIP (Mã dùng thử ngay: <code>VIP2026</code>)</label>
+        <div style="display:flex;gap:8px;">
+          <input id="vipCodeField" class="text-input" type="text" placeholder="Nhập VIP2026..." style="margin-bottom:0;" />
+          <button id="btnVerifyVipCode" class="btn-pink" style="white-space:nowrap;">Kích Hoạt</button>
+        </div>
+        <p id="vipVerifyMsg" style="font-size:12.5px;margin-top:6px;"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODAL 2: CÀI ĐẶT TÀI KHOẢN NGÂN HÀNG NHẬN TIỀN VIETQR (CHO CHỦ WEB)
+       ======================================================================== -->
+  <div id="ownerModal" class="modal-overlay">
+    <div class="modal-box">
+      <button class="modal-close-btn" id="btnCloseOwnerModal">&times;</button>
+      <h3 style="color:#fde68a;font-size:18px;margin-bottom:6px;">
+        ⚙️ Cài Đặt Số Tài Khoản Nhận Tiền (VietQR)
+      </h3>
+      <p style="font-size:12.5px;color:#e2c8dc;margin-bottom:12px;">
+        Nhập số tài khoản của bạn để toàn bộ tiền khách mở khóa VIP (19.000đ) chuyển thẳng về ngân hàng của bạn!
+      </p>
+
+      <label class="input-label">Mã Ngân Hàng (MB, VCB, TCB, ACB, BIDV, ICB, TPB...)</label>
+      <input id="ownBank" class="text-input" type="text" value="MB" />
+
+      <label class="input-label">Số Tài Khoản Nhận Tiền</label>
+      <input id="ownAcc" class="text-input" type="text" value="0988888888" />
+
+      <label class="input-label">Tên Chủ Tài Khoản (Không Dấu)</label>
+      <input id="ownName" class="text-input" type="text" value="NGUYEN VAN A" />
+
+      <label class="input-label">Giá Mở Khóa VIP (VNĐ)</label>
+      <input id="ownPrice" class="text-input" type="number" value="19000" />
+
+      <button id="btnSaveOwnerSettings" class="btn-pink" style="width:100%;">
+        💾 Lưu Cài Đặt & Sao Chép Link Bán Hàng Của Tôi
+      </button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
